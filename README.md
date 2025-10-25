@@ -70,9 +70,18 @@ This project was developed for a major agricultural partner (Ajinomoto) to creat
 Recognizing the challenges of real-world mobile captures, I designed a robust two-stage pipeline to ensure the reliability of the predictions.
 
 **System Architecture:**
-<p align="center">
-  <img src="images/workflow_charT_CV_Ajinomoto_1.png" alt="CV System Architecture" width="600"/>
-</p>
+```mermaid
+graph TD
+    A["Input Image (ID Card, Business Card, etc.)"] --> B{"1 Text Detection (Fine-tuned YOLOv8)"};
+    B --> C["Cropped Text Regions"];
+    C --> D{"2 Text Recognition (EasyOCR Engine)"};
+    D --> E["Extracted Text Data (JSON)"];
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style D fill:#bbf,stroke:#333,stroke-width:2px
+    style E fill:#9f9,stroke:#333,stroke-width:2px
+```
 
 **Key Components:**
 
